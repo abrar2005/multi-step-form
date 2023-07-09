@@ -26,7 +26,7 @@ export default class MultiStepForm {
     immitButtons() {
         //* Maybe for later. add buttons dynamicly.
         // if (this.#buttons == false) return 'Enable buttons in the class before adding.';
-        
+
         // this.#steps.forEach(step => {
         //     let submitBtn = document.createElement('button')
         // });
@@ -38,7 +38,7 @@ export default class MultiStepForm {
             if (index != this.#currentStep) {
                 step.style.display = 'none';
             }
-            
+
             // Add event listeners on the buttons
             if (step.querySelector('[data-form-next]')) {
                 step.querySelector('[data-form-next]').addEventListener('click', e => {
@@ -55,7 +55,7 @@ export default class MultiStepForm {
             if (step.querySelector('[data-form-submit]')) {
                 step.querySelector('[data-form-submit]').addEventListener('click', e => {
                     e.preventDefault();
-                    this.#onSubmit(e);
+                    this.onSubmit(e);
                 });
             }
         });
@@ -77,7 +77,36 @@ export default class MultiStepForm {
         this.#steps[this.#currentStep].style.display = 'block';
     }
 
-    #onSubmit(ele) {
+    onSubmit() {
         document.querySelector(this.#formElement).submit();
+    }
+
+    getData() {
+        const formData = {};
+
+        this.#steps.forEach((step, index) => {
+            const inputs = step.querySelectorAll('input, select, textarea');
+            inputs.forEach(input => {
+                const name = input.name;
+                const type = input.type;
+                let value;
+
+                if (type === 'checkbox') {
+                    value = input.checked ? input.value : '';
+                } else if (type === 'radio') {
+                    if (input.checked) {
+                        value = input.value;
+                    } else {
+                        value = formData[name] || '';
+                    }
+                } else {
+                    value = input.value;
+                }
+
+                formData[name] = value;
+            });
+        });
+
+        return formData;
     }
 }
