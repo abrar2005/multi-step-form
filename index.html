@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer type="module"></script>
+
+    <title>multi step form</title>
+</head>
+<body>
+
+    <form id="multi-step-form">
+        <fieldset class="form-step">
+            <legend>first form</legend>
+    
+            <div class="">
+                <label for="email">Email</label>
+                <input type="text" id="name">
+            </div>
+    
+            <div class="">
+                <label for="password">Password</label>
+                <input type="text" id="password">
+            </div>
+
+            <div class="buttons">
+                <button data-form-next>Next</button>
+            </div>
+        </fieldset>
+
+        <fieldset class="form-step">
+            <legend>second form</legend>
+    
+            <div class="">
+                <label for="first-name">First Name</label>
+                <input type="text" id="first-name">
+            </div>
+    
+            <div class="">
+                <label for="last-name">Last-name</label>
+                <input type="text" id="last-name">
+            </div>
+
+            <div class="buttons">
+                <button data-form-prev>Back</button>
+                <button data-form-next>Next</button>
+            </div>
+        </fieldset>
+
+        <fieldset class="form-step">
+            <legend>third form</legend>
+    
+            <div class="">
+                <label for="email">age</label>
+                <input type="text" id="name">
+            </div>
+    
+            <div class="">
+                <label for="password">height</label>
+                <input type="text" id="password">
+            </div>
+
+            <div class="buttons">
+                <button data-form-prev>Back</button>
+                <button data-form-submit>Submit</button>
+            </div>
+        </fieldset>
+    </dforiv>
+</body>
+</html>
